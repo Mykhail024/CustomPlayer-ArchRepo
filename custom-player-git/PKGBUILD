@@ -11,8 +11,6 @@ makedepends=("cmake" "make" "libpipewire" "taglib" "libsndfile")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mykhail024/CustomPlayer/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=("SKIP")
 
-conflicts=("CustomPlayer")
-
 prepare() {
   mkdir -p "CustomPlayer-$pkgver/build"
   cd "CustomPlayer-$pkgver/build"
@@ -23,7 +21,7 @@ prepare() {
 
 build() {
   cd "CustomPlayer-$pkgver/build"
-  make -j2
+  make -j$(nproc)
 }
 
 package() {

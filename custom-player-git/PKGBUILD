@@ -1,12 +1,12 @@
 pkgname="custom-player"
 pkgver="0.3.8.1"
-pkgrel=1
+pkgrel=2
 pkgdesc="CustomPlayer is a player aimed at convenience and configurability, written in Qt 6. "
 arch=("x86_64")
 license=('GPL3')
 url="https://github.com/Mykhail024/CustomPlayer"
 depends=("qt6-base" "pipewire")
-makedepends=("cmake" "make" "libpipewire" "taglib" "libsndfile")
+makedepends=("cmake" "make" "libpipewire" "taglib" "libsndfile" "xdg-desktop-portal-kde" "xdg-desktop-portal")
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mykhail024/CustomPlayer/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=("SKIP")

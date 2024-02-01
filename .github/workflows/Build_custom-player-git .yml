@@ -21,13 +21,11 @@ jobs:
     - name: Install Dependencies
       run: pacman -Syu --noconfirm base-devel cmake ninja libpipewire taglib libsndfile qt6-base clang sudo
 
-    - name: Configure
+    - name: Configure and Compile
       run: |
-          useradd user -G wheel && echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-          chown user -R . && cd custom-player-git
-
-    - name: Compile
-      run: su user -c "yes|PKGDEST=/tmp/custom-player-git makepkg --noconfirm -s"
+          useradd user -G wheel && echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers &&
+          chown user -R . && cd custom-player-git &&
+          su user -c "yes | PKGDEST=/tmp/custom-player-git makepkg --noconfirm -s"
 
     - name: Archive the artifacts
       uses: actions/upload-artifact@v2

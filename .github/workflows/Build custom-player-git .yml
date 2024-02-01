@@ -1,0 +1,36 @@
+# This starter workflow is for a CMake project running on a single platform. There is a different starter workflow if you need cross-platform coverage.
+# See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
+name: Build on Arch Linux
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        sparse-checkout: custom-player-git
+
+    - name: Install Dependencies
+      run: pacman -Syu --noconfirm base-devel cmake ninja libpipewire taglib libsndfile qt6-base clang sudo
+
+    - name: Configure
+      run: |
+          useradd user -G wheel && echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+          chown user -R . && cd custom-player-git
+
+    - name: Compile
+      run: su user -c "yes|PKGDEST=/tmp/custom-player-git makepkg --noconfirm -s"
+
+    - name: Archive the artifacts
+      uses: actions/upload-artifact@v2
+      with:
+          name: custom-player-git
+          path: /tmp/custom-player-git

@@ -19,7 +19,7 @@ jobs:
         sparse-checkout: custom-player-git
 
     - name: Install Dependencies
-      run: pacman -Syu --noconfirm base-devel cmake ninja libpipewire taglib libsndfile qt6-base clang sudo
+      run: pacman -Syu --noconfirm base-devel sudo
 
     - name: Configure and Compile
       run: |

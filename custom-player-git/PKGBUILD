@@ -6,7 +6,7 @@ arch=("x86_64")
 license=('GPL3')
 url="https://github.com/Mykhail024/CustomPlayer"
 depends=("qt6-base" "pipewire")
-makedepends=("cmake" "make" "libpipewire" "taglib" "libsndfile" "clang")
+makedepends=("cmake" "make" "libpipewire" "taglib" "libsndfile" "clang" "lld")
 optdepends=("xdg-desktop-portal: DE file selector")
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Mykhail024/CustomPlayer/archive/refs/tags/v${pkgver}.tar.gz")

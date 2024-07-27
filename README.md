@@ -2,7 +2,7 @@
 Arch repo for [CustomPlayer](https://github.com/Mykhail024/CustomPlayer)
 
 # Install
-Add this text to the end of the /etc/nvim.conf file:
+Add this text to the end of the /etc/pacman.conf file:
 ```
 [CustomPlayer]
 SigLevel = Optional TrustAll
